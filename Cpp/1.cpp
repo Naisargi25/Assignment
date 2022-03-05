@@ -13,9 +13,9 @@ class Employee
             void getInfo() 
             {
                 cout << "\nEnter the salary of employee: ";
-		            cin >> salary;
-		            cout << "Enter the number of hours: ";
-		            cin >> hours;
+		cin >> salary;
+		cout << "Enter the number of hours: ";
+		cin >> hours;
             }
         
             //add 10$ to the salary if salary is less than 500
@@ -51,14 +51,14 @@ int main()
         for(int i=0;i<n;i++)
         {
             emp[i].getInfo();
-		    emp[i].AddSal();
-		    emp[i].AddWork();
+	    emp[i].AddSal();
+	    emp[i].AddWork();
         }
         
         for(int i=0;i<n;i++)
-	    {
-		    cout << "\nThe final salary of employee "<<i+1<<" is: ";
-		    emp[i].displaySal();
-	    }
+	{
+	     cout << "\nThe final salary of employee "<<i+1<<" is: ";
+	     emp[i].displaySal();
+	}
         return 0;
 }
