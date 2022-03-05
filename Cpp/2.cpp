@@ -94,15 +94,15 @@ public:
 int main()
 {
     Matrix s,s1;
-    s1.no_of_row(2);
-    s1.no_of_column(2);
-    printf("Addition is\n");
+    s1.no_of_row(2); //set rows
+    s1.no_of_column(2); //set columns
+    printf("Addition for 3x3 matrix is\n");
     s.add(); //for default constructor
-    printf("Addition is\n");
+    printf("\nAddition for 2x2 matrix is\n");
     s1.add();
-    printf("Multiplication is\n");
+    printf("\nMultiplication for 3x3 matrix is\n");
     s.multiply1();
-    printf("Multiplication is\n");
+    printf("\nMultiplication for 2x2 matrix is\n");
     s1.multiply1();
     return 0;
 }	
