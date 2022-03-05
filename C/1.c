@@ -123,33 +123,26 @@ void disp_author()
 
 void title()
 {
+    int acc_no;
     if(n==0)
     {
         printf("Library is empty\n");
     }
-    int c=0;
-    char title[40];
-    printf("Enter title of the book: ");
-    scanf("%s",title);
-    printf("\n");
+    
+    printf("Enter Accession no.: ");
+    scanf("%d",&acc_no);
     for(int i=0;i<n;i++)
     {
-        if(strcmp(title,b[i].title)==0)
+        if(acc_no==b[i].ano)
         {
-            c++;
-            printf("\nAccession Number: %d",b[i].ano);
-            printf("\nBook title: %s",b[i].title);
-            printf("\nBook author: %s",b[i].author);
-            printf("\nBook price: %d",b[i].price);
-            printf("\nIssue status(1-yes/0-No): %d",b[i].flag);  
+            printf("\nTitle of the book is: %s",b[i].title);
             printf("\n");
         }
+        else
+        {
+            printf("No such book exist\n");
+        }
     }
-   
-    if(c==0)
-    {
-        printf("No book exist\n");
-    } 
 }
 
 void count()
@@ -182,4 +175,3 @@ void acc_order()
         printf("\n");
     }
 }
-
