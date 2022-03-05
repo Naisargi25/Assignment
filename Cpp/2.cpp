@@ -1,114 +1,108 @@
 #include<iostream>
-#include<vector>
-
 using namespace std;
 
-class Matrix
-{
-    //private member variables
-    int rows;
-    int columns;
-    vector<vector<int> >matrix;
+class Matrix{
+public:
+	int rows;	
+	int columns;
+	int a[3][3]={1,2,3,4,5,6,7,8,9};
+	int b[3][3]={1,2,3,4,5,6,7,8,9};
+	Matrix()
+	{
+	    rows=3;
+	    columns=3;
+	}
+	void no_of_row(int c)
+	{
+		rows=c;
+	}
+	void no_of_column(int d)
+	{
+		columns=d;
+	}
+	void entry(int r,int c,int d,int e)
+	{
+	    if(e==1)
+	    {
+	        for(int i=0;i<rows;i++)
+	        {
+		        for(int j=0;j<columns;j++)
+		        {
+		        	if(i==r && j==c)
+		        	{
+		        	    a[i][j]=d;
+		        	    
+		        	}
+		        }
+	        }
+    	}
+    	
+	    if(e==0)
+	    {
+	        for(int i=0;i<rows;i++)
+	        {
+	            for(int j=0;j<columns;j++)
+	            {
+		            if(i==r && j==c)
+		            {
+			            a[i][j]=d;
+		            }
+            	}
+        	}
+    	}
+    }
     
-    public:
-        //parametrized constructor
-        Matrix(int _rows, int _columns) :rows(_rows), columns(_columns),
-        matrix(rows, vector<int>(columns)){}
-
-        //get no. of rows
-        int getRows() 
+	void add()
+	{
+	    for(int i=0;i<rows;i++)
+	    {
+	        for(int j=0;j<columns;j++)
+	        {
+		        printf("%d\t",a[i][j]+b[i][j]);
+	        }
+	        printf("\n");
+	    }
+	}
+	
+	void multiply1()
+	{
+	    int mul[3][3];
+        for(int i=0;i<rows;i++)
         {
-            return rows;
+	        for(int j=0;j<columns;j++)
+	        {
+	            mul[i][j]=0;
+	            for(int k=0;k<columns;k++)
+	            {
+                	mul[i][j]+=a[i][j]+b[i][j];
+	            }	
+	         }
         }
-  
-        //get no. of columns
-        int getColumns()
-        {
-            return columns;
-        }
-
-        //set elements of matrix
-        void setElement(int i, int j)
-        {
-            cout << "Please, enter a value for position ["<<i<<"]["<<j<<"]: ";
-            cin >> matrix[i][j];
-        }
-        
-        friend Matrix operator+(Matrix& x, Matrix& y);
-        friend Matrix operator*(Matrix& x, Matrix& y);
-        
-       //display matrix
-        void Display()
-        {
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j <columns; j++)
-                {
-                    cout<<matrix[i][j]<<" ";
-                }
-                cout << endl;
-            }
-        }
+	    for(int i=0;i<rows;i++)
+	    {
+	        for(int j=0;j<columns;j++)
+	        {
+		         printf("%d\t",mul[i][j]);
+	         }
+	            printf("\n");
+    	}
+	
+    }
 };
 
-Matrix operator+(Matrix& x, Matrix& y)
-{
-    Matrix temp(x.rows,x.columns);
-    for (int i = 0; i < x.rows; i++)
-    {
-        for (int j = 0; j < x.columns; j++)
-        {
-            temp.matrix[i][j] = x.matrix[i][j] + y.matrix[i][j];
-        }
-    }
-    return temp;
-}
-
-Matrix operator*(Matrix& x, Matrix& y)
-{
-    Matrix temp(x.rows, x.columns);
-    for (int i = 0; i < x.rows; i++)
-    {
-        for (int j = 0; j < x.columns; j++)
-        {
-            temp.matrix[i][j] = x.matrix[i][j] * y.matrix[i][j];
-        }
-    }
-    return temp;
-}
 
 int main()
 {
-    int rows, columns;
-    cout << "Please, enter the number of rows for matrixes: ";
-    cin >> rows;
-    cout << "Please, enter the number of columns for matrixes: ";
-    cin >> columns;
-    Matrix a(rows,columns);
-    cout << "Enter elements for the first matrix:\n";
-    for (int i = 0; i < a.getRows(); i++)
-    {
-        for (int j = 0; j < a.getColumns(); j++)
-        {
-            a.setElement(i, j);
-        }
-    }
-    a.Display();
-
-    Matrix b(rows, columns);
-    cout << "Enter elements for the second matrix:\n";
-    for (int i = 0; i < b.getRows(); i++)
-    {
-        for (int j = 0; j < b.getColumns(); j++)
-        {
-            b.setElement(i, j);
-        }
-    }
-    b.Display();
-    cout << "\nResult of adding two matrices:\n";
-    Matrix c = a + b;
-    c.Display();
-    Matrix d = a*b;
-    cout << "\nResult of multiplying two matrices:\n";
-    d.Display();
-}
+    Matrix s,s1;
+    s1.no_of_row(2);
+    s1.no_of_column(2);
+    printf("Addition is\n");
+    s.add(); //for default constructor
+    printf("Addition is\n");
+    s1.add();
+    printf("Multiplication is\n");
+    s.multiply1();
+    printf("Multiplication is\n");
+    s1.multiply1();
+    return 0;
+}	
